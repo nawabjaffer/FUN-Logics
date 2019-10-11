@@ -1,0 +1,99 @@
+import java.util.Scanner;
+public class Flames
+{
+ public static void main(String[] args) {
+ Scanner scanner=new Scanner(System.in);
+ boolean state=false;
+ System.out.println("Dont give space between names");
+ System.out.print("Enter your name: ");
+ String n1=scanner.next().toLowerCase();
+ System.out.print("Enter your crush name: ");
+ String n2=scanner.next().toLowerCase();
+ StringBuilder b1=new StringBuilder(n1);
+ StringBuilder b2=new StringBuilder(n2);
+ outer:
+ for(int i=0;i<b1.length();)
+ {
+ state=false;
+ inner:
+ for(int j=0;j<b2.length();j++)
+ {
+
+if(b1.charAt(i)==b2.charAt(j))
+{
+ b1.deleteCharAt(i);
+b2.deleteCharAt(j);
+state=true;
+break inner;
+ }
+
+ }
+ if(state!=true)
+ {
+ i++;
+ }
+ if(b1.length()==0||b2.length()==0)
+ {
+ break outer;
+ }
+ }
+ StringBuilder s=new StringBuilder("FLAMES");
+ int count=b1.length()+b2.length();
+ int k=0,j=0;state=false;
+ while(s.length()!=1)
+ {
+
+ k++;j++;
+if(j==count)
+{
+ s.deleteCharAt(k-1);
+j=0;
+state=true;
+ }
+ if(state!=true&&k==s.length())
+{
+ k=0;
+ }
+if(state==true&&k==s.length()+1)
+{
+ k=0; state=false;
+ }
+ }
+
+ switch(s.toString())
+ {
+ case "F":
+ {
+ System.out.print("Friends");
+ }
+ case "L":
+ {
+ System.out.print("Love");
+break;
+ }
+ case "A":
+ {
+ System.out.print("Affection");
+break;
+ }
+ case "M":
+ {
+ System.out.print("Marriage");
+break;
+ }
+ case "E":
+ {
+ System.out.println("ENEMIES ");
+System.out.print("MODHALIL ARAMBIMPATHU KADHALIL
+MUDIYUM ");
+ break;
+ }
+ case "S":
+ {
+ System.out.print("Sister");
+ break;
+ }
+ }
+
+ }
+}
